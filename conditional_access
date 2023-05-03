@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# Get the current hour in 24-hour format
+CURRENT_HOUR=$(date +"%H")
+
+# Check if the current hour is between 9 AM and 5 PM
+if [ $CURRENT_HOUR -ge 9 ] && [ $CURRENT_HOUR -lt 17 ]
+then
+  # If it is within business hours, grant access to the network admin role
+  gcloud organizations add-iam-policy-binding ORGANIZATION_ID \
+    --member=role/roles/compute.networkAdmin \
+    --role=roles/compute.networkAdmin
+else
+  # If it is outside of business hours, revoke access to the network admin role
+  gcloud organizations remove-iam-policy-binding ORGANIZATION_ID \
+    --member=role/roles/compute.networkAdmin \
+    --role=roles/compute.networkAdmin
+fi
