@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# Set the names of the source and destination VPC networks
+SOURCE_VPC_NETWORK="source-vpc-network"
+DESTINATION_VPC_NETWORK="destination-vpc-network"
+
+# Check if the VPC peering already exists
+if gcloud compute networks peerings describe ${SOURCE_VPC_NETWORK}-to-${DESTINATION_VPC_NETWORK} --network=${SOURCE_VPC_NETWORK} >/dev/null 2>&1; then
+  echo "VPC peering ${SOURCE_VPC_NETWORK}-to-${DESTINATION_VPC_NETWORK} already exists."
+else
+  # Create the VPC peering
+  gcloud compute networks peerings create ${SOURCE_VPC_NETWORK}-to-${DESTINATION_VPC_NETWORK} \
+    --network=${SOURCE_VPC_NETWORK} \
+    --peer-network=${DESTINATION_VPC_NETWORK} \
+    --auto-create-routes
+  echo "VPC peering ${SOURCE_VPC_NETWORK}-to-${DESTINATION_VPC_NETWORK} created successfully."
+fi
