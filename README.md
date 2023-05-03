@@ -1,6 +1,6 @@
 # gcpbash
 Bash scripts and google cloud SDK commands for building and architecting solutions for IAM and IaC. 
-Each file is simple and straight forward for creating scenarios for
+Each file is simple and straight forward for creating scenarios for:
 
  - IAM policies with multiple admins for a project in an organization. 
 
