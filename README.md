@@ -16,4 +16,4 @@ Conditional expressions can be authored to act as blueprints for continuous depl
 
 Consider using templates for deploying resources at a larger scale which is best suited when using an IaC solution such as [Terraform](https://registry.terraform.io/modules/terraform-google-modules/project-factory/google/latest). 
 
-[Refer to the project factory module from the terraform registry.](https://registry.terraform.io/modules/terraform-google-modules/project-factory/google/latest) 
+[Refer to the Project Factory Module from the Terraform Registry.](https://registry.terraform.io/modules/terraform-google-modules/project-factory/google/latest) 
