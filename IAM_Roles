@@ -1,0 +1,39 @@
+
+# Set the project ID
+PROJECT_ID=<your-project-id>
+
+# Set the expiry date for the roles (e.g. 7 days from now)
+EXPIRY_DATE=$(date -d "+7 days" +%Y-%m-%dT%H:%M:%SZ)
+
+# Add the first user with Compute Engine admin role and expiry date
+gcloud projects add-iam-policy-binding $PROJECT_ID \
+  --member='user:<first-user-email>' \
+  --role='roles/compute.admin' \
+  --condition='expression=request.time < timestamp("'"$EXPIRY_DATE"'")'
+
+# Add the second user with Compute Engine instance admin role and expiry date
+gcloud projects add-iam-policy-binding $PROJECT_ID \
+  --member='user:<second-user-email>' \
+  --role='roles/compute.instanceAdmin' \
+  --condition='expression=request.time < timestamp("'"$EXPIRY_DATE"'")'
+
+# Add the third user with Compute Engine network admin role and expiry date
+gcloud projects add-iam-policy-binding $PROJECT_ID \
+  --member='user:<third-user-email>' \
+  --role='roles/compute.networkAdmin' \
+  --condition='expression=request.time < timestamp("'"$EXPIRY_DATE"'")'
+
+# Add the fourth user with Compute Engine security admin role and expiry date
+gcloud projects add-iam-policy-binding $PROJECT_ID \
+  --member='user:<fourth-user-email>' \
+  --role='roles/compute.securityAdmin' \
+  --condition='expression=request.time < timestamp("'"$EXPIRY_DATE"'")'
+
+# Add the fifth user with Compute Engine storage admin role and expiry date
+gcloud projects add-iam-policy-binding $PROJECT_ID \
+  --member='user:<fifth-user-email>' \
+  --role='roles/compute.storageAdmin' \
+  --condition='expression=request.time < timestamp("'"$EXPIRY_DATE"'")'
+  
+   
+  
